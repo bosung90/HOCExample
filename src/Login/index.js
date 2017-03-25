@@ -113,11 +113,6 @@ const styles = StyleSheet.create({
     paddingTop: 26,
     paddingBottom: 18
   },
-  logo: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: 'grey'
-  },
   textInput: {
     height: 60,
     borderRadius: 3,
