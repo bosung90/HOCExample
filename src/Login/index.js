@@ -6,7 +6,8 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  Text
+  Text,
+  KeyboardAvoidingView
 } from 'react-native';
 import * as images from 'src/images';
 import * as HOC from 'src/HOC';
@@ -35,42 +36,44 @@ export default class Login extends Component {
         spinner={this.state.logging}
         style={styles.container}
       >
-        <View
-          style={{
-            flex: 1
-          }}
-        >
-          <Image
-            resizeMode="cover"
-            style={[
-              {
-                width: '100%',
-                height: '100%',
-                overflow: 'visible'
-              }
-            ]}
-            source={images.gembul}
-          />
-        </View>
-        <TextInput
-          placeholder="Username"
-          style={[styles.textInput, { marginTop: 40 }]}
-        />
-        <TextInput
-          placeholder="Password"
-          style={[styles.textInput, { marginVertical: 20 }]}
-        />
+        <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+          <View
+            style={{
+              flex: 1
+            }}
+          >
+            <Image
+              resizeMode="contain"
+              style={[
+                {
+                  height: '100%',
+                  width: '100%'
+                }
+              ]}
+              source={images.gembul}
+            />
 
-        <TouchableOpacity
-          onPress={() => {
-            this.callLoginAPI();
-          }}
-          style={[styles.button]}
-        >
-          <Text style={{ color: 'white', fontSize: 20, fontWeight: '600' }}>
-            SIGN IN
-          </Text>
-        </TouchableOpacity>
+          </View>
+          <TextInput
+            placeholder="Username"
+            style={[styles.textInput, { marginTop: 40 }]}
+          />
+          <TextInput
+            placeholder="Password"
+            style={[styles.textInput, { marginVertical: 20 }]}
+          />
+
+          <TouchableOpacity
+            onPress={() => {
+              this.callLoginAPI();
+            }}
+            style={[styles.button]}
+          >
+            <Text style={{ color: 'white', fontSize: 20, fontWeight: '600' }}>
+              SIGN IN
+            </Text>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
         <TouchableOpacity
           style={{
             alignSelf: 'flex-end',
