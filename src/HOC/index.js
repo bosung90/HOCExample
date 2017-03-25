@@ -1,4 +1,5 @@
 // @flow
 import FullScreenSpinnerHOC from './FullScreenSpinnerHOC';
+import DismissKeyboardHOC from './DismissKeyboardHOC';
 
-export { FullScreenSpinnerHOC };
+export { FullScreenSpinnerHOC, DismissKeyboardHOC };

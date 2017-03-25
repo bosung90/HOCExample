@@ -9,6 +9,9 @@ import {
   Text
 } from 'react-native';
 import * as images from 'src/images';
+import * as HOC from 'src/HOC';
+
+const DismissKeyboardView = HOC.DismissKeyboardHOC(View);
 
 export default class Login extends Component {
   state = {
@@ -24,7 +27,7 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <DismissKeyboardView style={styles.container}>
         <View
           style={{
             flex: 1
@@ -87,7 +90,7 @@ export default class Login extends Component {
             Create an account
           </Text>
         </TouchableOpacity>
-      </View>
+      </DismissKeyboardView>
     );
   }
 }
