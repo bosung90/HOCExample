@@ -12,6 +12,9 @@ import * as images from 'src/images';
 import * as HOC from 'src/HOC';
 
 const DismissKeyboardView = HOC.DismissKeyboardHOC(View);
+const FullSCreenSpinnerAndDismissKeyboardView = HOC.FullScreenSpinnerHOC(
+  DismissKeyboardView
+);
 
 export default class Login extends Component {
   state = {
@@ -23,11 +26,15 @@ export default class Login extends Component {
     await new Promise(resolve => {
       setTimeout(resolve, 2000);
     });
+    alert('SIGN IN success');
     this.setState({ logging: false });
   }
   render() {
     return (
-      <DismissKeyboardView style={styles.container}>
+      <FullSCreenSpinnerAndDismissKeyboardView
+        spinner={this.state.logging}
+        style={styles.container}
+      >
         <View
           style={{
             flex: 1
@@ -90,7 +97,7 @@ export default class Login extends Component {
             Create an account
           </Text>
         </TouchableOpacity>
-      </DismissKeyboardView>
+      </FullSCreenSpinnerAndDismissKeyboardView>
     );
   }
 }
