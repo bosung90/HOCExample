@@ -9,14 +9,12 @@ import {
   Text
 } from 'react-native';
 import * as images from 'src/images';
-import * as HOC from 'src/HOC';
-
-const FullScreenSpinnerView = HOC.FullScreenSpinnerHOC(View);
 
 export default class Login extends Component {
   state = {
     logging: false
   };
+  // This is for demo only, normally you want to create an api wrapper
   async callLoginAPI() {
     this.setState({ logging: true });
     await new Promise(resolve => {
@@ -24,13 +22,9 @@ export default class Login extends Component {
     });
     this.setState({ logging: false });
   }
-  // This is for demo only, normally you want to create an api wrapper
   render() {
     return (
-      <FullScreenSpinnerView
-        spinner={this.state.logging}
-        style={styles.container}
-      >
+      <View style={styles.container}>
         <View
           style={{
             flex: 1
@@ -93,7 +87,7 @@ export default class Login extends Component {
             Create an account
           </Text>
         </TouchableOpacity>
-      </FullScreenSpinnerView>
+      </View>
     );
   }
 }
