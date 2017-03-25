@@ -17,6 +17,9 @@ const FullSCreenSpinnerAndDismissKeyboardView = HOC.FullScreenSpinnerHOC(
   DismissKeyboardView
 );
 
+const KeyboardAwareImage = HOC.KeyboardAwareHOC(Image);
+const KeyboardAwareView = HOC.KeyboardAwareHOC(View);
+
 export default class Login extends Component {
   state = {
     logging: false
@@ -37,12 +40,14 @@ export default class Login extends Component {
         style={styles.container}
       >
         <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
-          <View
+          <KeyboardAwareView
             style={{
-              flex: 1
+              flex: 1,
+              marginBottom: 40
             }}
+            styleDuringKeyboardShow={{ marginBottom: 10 }}
           >
-            <Image
+            <KeyboardAwareImage
               resizeMode="contain"
               style={[
                 {
@@ -50,14 +55,11 @@ export default class Login extends Component {
                   width: '100%'
                 }
               ]}
+              styleDuringKeyboardShow={{ opacity: 0.5 }}
               source={images.gembul}
             />
-
-          </View>
-          <TextInput
-            placeholder="Username"
-            style={[styles.textInput, { marginTop: 40 }]}
-          />
+          </KeyboardAwareView>
+          <TextInput placeholder="Username" style={[styles.textInput]} />
           <TextInput
             placeholder="Password"
             style={[styles.textInput, { marginVertical: 20 }]}
